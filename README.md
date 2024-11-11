@@ -8,13 +8,13 @@ This README was last edited at intersim v0.00.
 ## Initial Project Plan
 Checkboxes indicate features considered complete.
 
-### High speed global simulation
+### High Speed Global Simulation
 - [ ] intersim, as a compiled C++ program, should be able to simulate a complex and deep world with hundreds (if not thousands) of years of rich history in a matter of minutes on reasonable hardware.
 - [ ] intersim should feature multiple levels (at least 2) of "complexity", name pending. 
     - [ ] These depth levels should dictate the granularity of the world simulation; e.g. high depths should keep track of individual important figureheads in the world, while low levels only track the overarching state of large regions.
 - [ ] The user should be able to set unique stopping points for history generation e.g. year reached, wars ended, etc.
 - [ ] At any time, the system should allow the user to pause the generation of history, explore it, and then resume generation.
-### Extreme configurability
+### Extreme Configurability
 - [ ] All in-program data should come from config files exposed to the user.
 - [ ] intersim should ship with a "default" configuration, along with a short guide on how to alter these configs so that the end user can use intersim for their own custom fantasy worlds.
 - [ ] When writing a fantasy world, certain events can be set in stone. intersim should allow the user to specify certain events and the years they happen.
@@ -30,8 +30,8 @@ Checkboxes indicate features considered complete.
 ### Sensible Warring
 - [ ] Wars should begin based on the attitudes of regions to one another.
 - [ ] Winners of wars should be determined based on a combination of randomness, military power, logistical sensibility, and economic prowess.
-### Persistent generations
+### Persistent Generations
 - [ ] intersim should allow users to save a compressed world history file that can be opened later by intersim for further exploration.
-### Future plans
+### Future Plans
 - intersim may be developed further by adding a GUI mode for exploration of the generated history.
 - intersim may be developed further by incorporating a representation of a magic system.

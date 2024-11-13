@@ -30,6 +30,7 @@ class Director {
 class Ledger {
     public:
         vector<Event> events;
+        Ledger() {};
         void recordEvent(Event event) {
             Ledger::events.push_back(event);
         };
@@ -76,5 +77,8 @@ class Region {
 };
 
 int main() {
-
+    Ledger ledger;
+    Event event;
+    ledger.recordEvent(event);
+    ledger.printLedger();
 };

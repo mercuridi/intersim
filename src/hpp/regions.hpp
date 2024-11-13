@@ -9,10 +9,7 @@ class Region {
         // for now, attitude as a singular representation
         // in future, improve logic to handle full attitude matrices
         int attitude;
-        Region(std::string name="No Name Provided", int attitude=0) {
-            this->name = name;
-            this->attitude = attitude;
-        }
+        Region(std::string name="No Name Provided", int attitude=0);
 };
 
 #endif

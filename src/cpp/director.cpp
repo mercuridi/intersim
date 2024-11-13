@@ -2,10 +2,8 @@
 #include <vector>
 
 #include "../hpp/events.hpp"
+#include "../hpp/director.hpp"
 
-class Director {
-    public:
-        Event dummyEvent() {
-            return Event();
-        };
+Event dummyEvent() {
+    return Event();
 };

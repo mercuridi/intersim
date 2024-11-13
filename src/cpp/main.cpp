@@ -10,17 +10,12 @@
 #include "../hpp/regions.hpp"
 
 int main() {
-    std::cout << __cplusplus;
-    std::cout << "\nStarting program\n";
+    std::cout << "C++ version " << __cplusplus << "\n";
     Ledger ledger;
-    std::cout << "Ledger created\n";
     Event event;
-    std::cout << "Event created\n";
     ledger.recordEvent(event);
     ledger.recordEvent(event);
     ledger.recordEvent(event);
-    std::cout << "Events recorded in ledger\n";
     ledger.printLedger();
-    std::cout << "Ending program\n";
     return 0;
 };

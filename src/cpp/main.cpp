@@ -12,10 +12,13 @@
 int main() {
     std::cout << "C++ version " << __cplusplus << "\n";
     Ledger ledger;
-    Event event;
-    ledger.recordEvent(event);
-    ledger.recordEvent(event);
-    ledger.recordEvent(event);
+    Event dummyEvent;
+    ledger.recordEvent(dummyEvent);
+    Region dokerra("Dokerra", -10);
+    Region naranciaRegion("Narancia", 10);
     ledger.printLedger();
+    Calendar calendar(0);
+    Director director(Calendar calendar*);
+    director.calculateHistory(100);
     return 0;
 };

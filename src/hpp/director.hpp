@@ -8,9 +8,11 @@ class Director {
     public:
         // variables
         Calendar* calendarReference;
+        Ledger* ledgerReference;
+        std::vector<Region>* regionsReference;
 
         // functions
-        Director(Calendar calendarReference*);
+        Director(Calendar &calendarReference, Ledger &ledgerReference, std::vector<Region> &regionsReference);
         void calculateHistory(int stopYear);
 };
 #endif // DIRECTOR_HPP_

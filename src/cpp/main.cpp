@@ -18,7 +18,7 @@ int main() {
     Region naranciaRegion("Narancia", 10);
     ledger.printLedger();
     Calendar calendar(0);
-    Director director(Calendar calendar*);
+    Director director(calendar);
     director.calculateHistory(100);
     return 0;
 };

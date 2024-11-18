@@ -1,11 +1,14 @@
 #include <iostream>
 #include <vector>
 
+#include "../hpp/ledger.hpp"
 #include "../hpp/events.hpp"
 #include "../hpp/director.hpp"
 
-Director::Director(Calendar* calendarReference) {
-    this->calendarReference = calendarReference;
+Director::Director(Calendar &calendarReference, Ledger &ledgerReference, std::vector<Region> &regionsReference) {
+    this->calendarReference = &calendarReference;
+    this->ledgerReference = &ledgerReference;
+    this->regionsReference = &regionsReference;
 }
 
 void Director::calculateHistory(int stopYear) {
@@ -16,7 +19,7 @@ void Director::calculateHistory(int stopYear) {
             continue;
         }
         else {
-            
+
         }
     }
 }

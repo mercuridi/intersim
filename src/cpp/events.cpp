@@ -3,6 +3,7 @@
 
 #include "../hpp/regions.hpp"
 #include "../hpp/events.hpp"
+#include <format>
 
 // change in future to use a date representation instead of a year
 Event::Event(int year, std::string summary) {
@@ -25,6 +26,7 @@ void War::endWar(int endYear, std::vector<Region*>* winners, std::vector<Region*
     this->endYear = endYear;
     this->winners = winners;
     this->losers = losers;
+    this->summary = std::format("This war began in {} and ended in {}.", year, endYear);
 }
 
 void War::printWar() {

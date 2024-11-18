@@ -24,7 +24,7 @@ class War: public Event {
         std::vector<Region*>* winners;
         std::vector<Region*>* losers;
 
-        War(std::vector<Region*> allies, std::vector<Region*> axis) : event();
+        War(std::vector<Region*> allies, std::vector<Region*> axis) : Event() {};
         void startWar(int startYear);
         void endWar(int endYear, std::vector<Region*>* winners, std::vector<Region*>* losers);
         void printWar();

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <limits.h>
 #include "regions.hpp"
 
 class Event {
@@ -11,7 +12,7 @@ class Event {
         // change in future to use a date representation instead of a year
         int year;
         std::string summary;
-        Event(int year = 0, std::string summary = "This event has no provided summary.");
+        Event(int year = INT_MAX, std::string summary = "This event has no provided summary.");
 };
 
 class War: public Event {

@@ -10,10 +10,16 @@
 #include "../hpp/regions.hpp"
 
 int main() {
-    // basic functionality check for recording an event to the ledger
+    // initialise calendar
+    Calendar calendar(0);
+    std::cout << "Calendar initialised\n";
+
+    // basic functionality check for:
+    // 1. initialising the ledger
+    // 2. recording an event to the ledger
     std::cout << "Program initialised\n";
     std::cout << "C++ version " << __cplusplus << "\n";
-    Ledger ledger;
+    Ledger ledger(&calendar);
     Event dummyEvent;
     ledger.recordEvent(dummyEvent);
     ledger.printLedger();
@@ -25,17 +31,15 @@ int main() {
     std::vector<Region> regions = {testReg1, testReg2};
     std::cout << "Regions initialised\n";
 
-    // initialise calendar
-    Calendar calendar(0);
-    std::cout << "Calendar initialised\n";
-
     // initialise director
     Director director(&calendar, &ledger, &regions);
     std::cout << "Director initialised\n";
 
     // call primary loop
     std::cout << "Calculating history...\n";
-    director.calculateHistory(100);
-    std::cout << "Main executed";
+    director.calculateHistory(100, 5);
+    std::cout << "Main executed\n";
+
+    ledger.printLedger();
     return 0;
 };

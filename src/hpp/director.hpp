@@ -14,6 +14,6 @@ class Director {
 
         // functions
         Director(Calendar *calRef, Ledger *ledRef, std::vector<Region> *regionsRef);
-        void calculateHistory(int stopYear);
+        void calculateHistory(int stopYear, int maxEvents);
 };
 #endif // DIRECTOR_HPP_

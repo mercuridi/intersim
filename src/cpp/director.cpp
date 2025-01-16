@@ -21,7 +21,7 @@ void Director::calculateHistory(int stopYear) {
             continue;
         }
         else {
-            std::cout << "start a war!!!!";
+            std::cout << "start a war!!!!\n";
         }
     }
 }

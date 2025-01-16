@@ -13,9 +13,10 @@ Calendar::Calendar(int startYear) {
 
 void Calendar::printCurrentDate() {
     std::cout << currentYear;
+    std::cout << "\n";
 };
 
 void Calendar::incrementYear() {
     currentYear++;
-    printCurrentDate();
+    //printCurrentDate();
 };

@@ -6,10 +6,10 @@
 #include "../hpp/director.hpp"
 #include "../hpp/calendar.hpp"
 
-Director::Director(Calendar *calendarReference, Ledger *ledgerReference, std::vector<Region> *regionsReference) {
-    this->calendarPtr = calendarReference;
-    this->ledgerPtr = ledgerReference;
-    this->regionsPtr = regionsReference;
+Director::Director(Calendar *calendarPtr, Ledger *ledgerPtr, std::vector<Region> *regionsPtr) {
+    this->calendarPtr   = calendarPtr;
+    this->ledgerPtr     = ledgerPtr;
+    this->regionsPtr    = regionsPtr;
 }
 
 void Director::calculateHistory(int stopYear) {
@@ -21,7 +21,9 @@ void Director::calculateHistory(int stopYear) {
             continue;
         }
         else {
-            std::cout << "start a war!!!!\n";
+            std::vector<Region*> allies = {&(*regionsPtr)[0]};
+            std::vector<Region*> axis = {&(*regionsPtr)[1]};
+            War thisWar(allies, axis);
         }
     }
 }

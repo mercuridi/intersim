@@ -19,7 +19,7 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
             ((*ledgerPtr).eventsRecorded < maxEvents)) {
         (*calendarPtr).incrementYear();
         int d100 = std::rand() % 100;
-        if (d100 < 80) {
+        if (d100 < 95) {
             continue;
         }
         else {

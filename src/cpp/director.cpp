@@ -4,6 +4,7 @@
 #include "../hpp/ledger.hpp"
 #include "../hpp/events.hpp"
 #include "../hpp/director.hpp"
+#include "../hpp/calendar.hpp"
 
 Director::Director(Calendar *calendarReference, Ledger *ledgerReference, std::vector<Region> *regionsReference) {
     this->calendarPtr = calendarReference;

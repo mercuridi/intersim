@@ -6,15 +6,16 @@
 // later, improve to add granularity to the calendar
 // years is good enough for early development
 int currentYear;
+
 Calendar::Calendar(int startYear) {
     currentYear = startYear;
 };
 
-void printCurrentDate() {
+void Calendar::printCurrentDate() {
     std::cout << currentYear;
 };
 
-void incrementYear() {
+void Calendar::incrementYear() {
     currentYear++;
     printCurrentDate();
 };

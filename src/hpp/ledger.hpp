@@ -1,8 +1,11 @@
+// guard
 #ifndef LEDGER_HPP_
 #define LEDGER_HPP_
 
+// library imports
 #include <vector>
 
+// header imports
 #include "events.hpp"
 #include "calendar.hpp"
 
@@ -19,4 +22,5 @@ class Ledger {
         void printLedger();
 };
 
+// end guard
 #endif // LEDGER_HPP_

@@ -1,6 +1,8 @@
+// guard
 #ifndef REGIONS_HPP_
 #define REGIONS_HPP_
 
+// library imports
 #include <iostream>
 
 class Region {
@@ -12,4 +14,5 @@ class Region {
         Region(std::string name="No Name Provided", int attitude=0);
 };
 
-#endif
+// guard
+#endif //REGIONS_HPP_

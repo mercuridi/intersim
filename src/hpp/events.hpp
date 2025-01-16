@@ -1,10 +1,14 @@
+// guard
 #ifndef EVENTS_HPP_
 #define EVENTS_HPP_
 
+// library imports
 #include <iostream>
 #include <vector>
 #include <string>
 #include <limits.h>
+
+// header imports
 #include "regions.hpp"
 
 class Event {
@@ -31,4 +35,5 @@ class War: public Event {
         void printWar();
 };
 
+// end guard
 #endif // EVENTS_HPP_

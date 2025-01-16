@@ -1,3 +1,4 @@
+// guard
 #ifndef CALENDAR_HPP_
 #define CALENDAR_HPP_
 
@@ -11,4 +12,5 @@ class Calendar {
         void incrementYear();
 };
 
+// end guard
 #endif // CALENDAR_HPP_

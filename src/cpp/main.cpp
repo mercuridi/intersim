@@ -1,7 +1,9 @@
+// library imports
 #include <iostream>
 #include <vector>
 #include <format>
 
+// header imports
 #include "../hpp/calendar.hpp"
 #include "../hpp/director.hpp"
 #include "../hpp/events.hpp"
@@ -10,22 +12,24 @@
 #include "../hpp/regions.hpp"
 
 int main() {
-    // initialise calendar
+    // initialise program
+    std::cout << "Program initialised\n";
+    std::cout << "C++ version " << __cplusplus << "\n";
+
+    // initialise calendar (used by ledger and director)
     Calendar calendar(0);
     std::cout << "Calendar initialised\n";
 
     // basic functionality check for:
-    // 1. initialising the ledger
+    // 1. initialising the ledger (used by director)
     // 2. recording an event to the ledger
-    std::cout << "Program initialised\n";
-    std::cout << "C++ version " << __cplusplus << "\n";
     Ledger ledger(&calendar);
     Event dummyEvent;
     ledger.recordEvent(dummyEvent);
     ledger.printLedger();
     std::cout << "Dummy event recorded and printed\n";
 
-    // initialise some regions manually
+    // initialise some regions manually (used by director)
     Region testReg1("Test Region 1", -10);
     Region testReg2("Test Region 2", 10);
     std::vector<Region> regions = {testReg1, testReg2};

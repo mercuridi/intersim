@@ -6,22 +6,29 @@
 #include "../hpp/director.hpp"
 #include "../hpp/calendar.hpp"
 
-Director::Director(Calendar *calendarReference, Ledger *ledgerReference, std::vector<Region> *regionsReference) {
-    this->calendarPtr = calendarReference;
-    this->ledgerPtr = ledgerReference;
-    this->regionsPtr = regionsReference;
+Director::Director(Calendar *calendarPtr, Ledger *ledgerPtr, std::vector<Region> *regionsPtr) {
+    this->calendarPtr   = calendarPtr;
+    this->ledgerPtr     = ledgerPtr;
+    this->regionsPtr    = regionsPtr;
 }
 
-void Director::calculateHistory(int stopYear) {
+void Director::calculateHistory(int stopYear, int maxEvents) {
 
-    while ((*calendarPtr).currentYear < stopYear) {
+    // while we haven't hit the max year or max war events
+    while (((*calendarPtr).currentYear < stopYear) and 
+            ((*ledgerPtr).eventsRecorded < maxEvents)) {
         (*calendarPtr).incrementYear();
         int d100 = std::rand() % 100;
         if (d100 < 80) {
             continue;
         }
         else {
-            std::cout << "start a war!!!!\n";
+            // grab the 2 manually initialised regions and start a war between them
+            std::vector<Region*> allies = {&(*regionsPtr)[0]};
+            std::vector<Region*> axis = {&(*regionsPtr)[1]};
+            War thisWar(allies, axis);
+            thisWar.startWar((*calendarPtr).currentYear);
+            (*ledgerPtr).recordEvent(thisWar);
         }
     }
 }

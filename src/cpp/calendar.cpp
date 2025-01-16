@@ -1,20 +1,21 @@
+// library imports
 #include <iostream>
 #include <vector>
 
+// header imports
 #include "../hpp/calendar.hpp"
 
-// later, improve to add granularity to the calendar
-// years is good enough for early development
-int currentYear;
-
+// calendar constructor
 Calendar::Calendar(int startYear) {
     currentYear = startYear;
 };
 
+// function to print the current date
 void Calendar::printCurrentDate() {
     std::cout << currentYear << "\n";
 };
 
+// function to increment the year
 void Calendar::incrementYear() {
     currentYear++;
     //printCurrentDate();

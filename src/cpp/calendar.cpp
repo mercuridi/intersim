@@ -16,4 +16,5 @@ void printCurrentDate() {
 
 void incrementYear() {
     currentYear++;
+    printCurrentDate();
 };

@@ -3,6 +3,7 @@
 
 #include "../hpp/calendar.hpp"
 #include "../hpp/events.hpp"
+#include "../hpp/ledger.hpp"
 
 class Director {
     public:

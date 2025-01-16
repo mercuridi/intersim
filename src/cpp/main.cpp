@@ -14,11 +14,12 @@ int main() {
     Ledger ledger;
     Event dummyEvent;
     ledger.recordEvent(dummyEvent);
-    Region dokerra("Dokerra", -10);
-    Region naranciaRegion("Narancia", 10);
+    Region dokerraReg("Dokerra", -10);
+    Region naranciaReg("Narancia", 10);
+    std::vector<Region> regions = {dokerraReg, naranciaReg};
     ledger.printLedger();
     Calendar calendar(0);
-    Director director(calendar);
+    Director director(&calendar, &ledger, &regions);
     director.calculateHistory(100);
     return 0;
 };

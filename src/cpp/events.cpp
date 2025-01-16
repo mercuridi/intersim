@@ -5,13 +5,13 @@
 #include "../hpp/events.hpp"
 #include <format>
 
-// change in future to use a date representation instead of a year
+// change in future to use a date representation instead of just a year
 Event::Event(int year, std::string summary) {
     this->year = year;
     this->summary = summary;
 };
 
-War::War(std::vector<Region*> allies, std::vector<Region*> axis) : Event(){
+War::War(std::vector<Region*> allies, std::vector<Region*> axis) : Event() {
     this->allies = allies;
     this->axis = axis;
 };

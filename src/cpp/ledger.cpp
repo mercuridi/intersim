@@ -29,8 +29,8 @@ void Ledger::printLedger() {
         // long print statement:
         std::cout << i+1 << ": " << // event number - maybe record this in ledger as an ID as part of each event?
         Ledger::events[i].summary << // event summary
-        std::format("It happened in the year {}", Ledger::events[i].year) << // event year
-        "\n";
+        std::format(" It happened in the year {}", Ledger::events[i].year) << // event year
+        ".\n";
     }
     std::cout << "Final year: " << (*calendarPtr).currentYear << "\n";
 }

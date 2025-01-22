@@ -13,12 +13,14 @@ class Ledger {
     public:
         // variables
         int eventsRecorded;
+        int idCount;
         Calendar *calendarPtr;
 
         // functions
         std::vector<Event> events;
         Ledger(Calendar *calendarPtr);
         void recordEvent(Event event);
+        int getNextID();
         void printLedger();
 };
 

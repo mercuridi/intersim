@@ -15,8 +15,10 @@ class Event {
     public:
         // change in future to use a date representation instead of a year
         int year;
+        int numericID;
         std::string summary;
-        Event(int year = INT_MAX, std::string summary = "This event has no provided summary.");
+        // default constructor
+        Event(int year = INT_MAX, int numericID = INT_MAX, std::string summary = "This event has no provided summary.");
 };
 
 class War: public Event {
@@ -29,7 +31,7 @@ class War: public Event {
         std::vector<Region*>* winners;
         std::vector<Region*>* losers;
 
-        War(std::vector<Region*> allies, std::vector<Region*> axis); // inherits from event in .cpp
+        War(std::vector<Region*> allies, std::vector<Region*> axis, int year, int numericID, std::string summary); // inherits from event in .cpp
         void startWar(int startYear);
         void endWar(int endYear, std::vector<Region*>* winners, std::vector<Region*>* losers);
         void printWar();

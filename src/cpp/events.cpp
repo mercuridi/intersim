@@ -1,21 +1,23 @@
 // library imports
 #include <iostream>
 #include <string>
+#include <format>
 
 // header imports
 #include "../hpp/regions.hpp"
+#include "../hpp/ledger.hpp"
 #include "../hpp/events.hpp"
-#include <format>
 
 // change in future to use a date representation instead of just a year
 // event constructor
-Event::Event(int year, std::string summary) {
+Event::Event(int year, int numericID, std::string summary) {
     this->year = year;
+    this->numericID = numericID;
     this->summary = summary;
 };
 
 // war subclass constructor
-War::War(std::vector<Region*> allies, std::vector<Region*> axis) : Event() {
+War::War(std::vector<Region*> allies, std::vector<Region*> axis, int year, int numericID, std::string summary) : Event(year, numericID, summary) {
     this->allies = allies;
     this->axis = axis;
 };
@@ -24,7 +26,7 @@ War::War(std::vector<Region*> allies, std::vector<Region*> axis) : Event() {
 void War::startWar(int startYear) {
     // add a guard in case the war is already started
     this->ongoing = true;
-    this->year = startYear;
+    //this->year = startYear;
 }
 
 // function to end a war after it's been defined

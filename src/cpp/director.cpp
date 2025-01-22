@@ -36,7 +36,7 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
             // grab the 2 manually initialised regions and start a war between them
             std::vector<Region*> allies = {&(*regionsPtr)[0]};
             std::vector<Region*> axis = {&(*regionsPtr)[1]};
-            War thisWar(allies, axis);
+            War thisWar(allies, axis, (*calendarPtr).currentYear, (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
             thisWar.startWar((*calendarPtr).currentYear);
             (*ledgerPtr).recordEvent(thisWar);
         }

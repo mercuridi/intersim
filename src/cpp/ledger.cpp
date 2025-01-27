@@ -23,15 +23,17 @@ void Ledger::recordEvent(Event event) {
     eventsRecorded++;
 };
 
+// function to get a new unique ID for a generated token
 int Ledger::getNextID() {
     idCount++;
     return idCount;
 }
 
-// this function prints the ledger
+// this function prints the entire ledger
 void Ledger::printLedger() {
     // printing long ledgers will probably crash
     // this function may change to only print a selection of events?
+    std::cout << "Full ledger print requested:";
     for (int i = 0; i < events.size(); i++) {
         // long print statement:
         std::cout <<

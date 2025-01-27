@@ -7,12 +7,12 @@
 
 // header imports
 #include "events.hpp"
-#include "calendar.hpp"
+#include "date.hpp"
 
 class Ledger {
     public:
         std::vector<Event> events;
-        Ledger(Calendar *calendarPtr);
+        Ledger(Date *calendarPtr);
         void recordEvent(Event event);
         int getNextID();
         int getEventsRecorded();
@@ -21,7 +21,7 @@ class Ledger {
         // variables
         int eventsRecorded;
         int idCount;
-        Calendar *calendarPtr;
+        Date *calendarPtr;
 
         // functions
 };

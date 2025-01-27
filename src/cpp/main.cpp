@@ -4,7 +4,7 @@
 #include <format>
 
 // header imports
-#include "../hpp/calendar.hpp"
+#include "../hpp/date.hpp"
 #include "../hpp/director.hpp"
 #include "../hpp/events.hpp"
 #include "../hpp/ledger.hpp"
@@ -13,17 +13,16 @@
 
 int main() {
     // initialise program
-    std::cout << "Program initialised\n";
+    std::cout << "\nProgram initialised\n";
     std::cout << "C++ version " << __cplusplus << "\n\n";
 
     // initialise calendar (used by ledger and director)
-    Calendar calendar(0);
+    Date calendar(0, 0, 0);
     std::cout << "Calendar initialised\n";
 
     // basic functionality check for:
     // 1. initialising the ledger (used by director)
     // 2. recording an event to the ledger
-
     std::cout << "Basic functionality check...\n";
     Ledger ledger(&calendar);
     Event dummyEvent;
@@ -45,9 +44,11 @@ int main() {
     std::cout << "Calculating history...\n";
     director.calculateHistory(100, 5);
 
+    // request ledger print to terminal
     std::cout << "Requesting ledger print...\n";
     ledger.printLedger();
 
+    // finish program, shutdown gracefully
     std::cout << "Main executed, returning 0.\n";
     return 0;
 };

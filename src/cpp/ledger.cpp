@@ -3,12 +3,12 @@
 #include <format>
 
 // header imports
-#include "../hpp/calendar.hpp"
+#include "../hpp/date.hpp"
 #include "../hpp/events.hpp"
 #include "../hpp/ledger.hpp"
 
 // ledger constructor
-Ledger::Ledger(Calendar *calendarPtr) {
+Ledger::Ledger(Date *calendarPtr) {
     events;
     eventsRecorded = 0;
     idCount = 0;
@@ -40,11 +40,12 @@ void Ledger::printLedger() {
     std::cout << "\nFull ledger print requested...\n";
     for (int i = 0; i < events.size(); i++) {
         // the following lines are a single long print statement:
-        std::cout <<
-        Ledger::events[i].getEventID() << ": " << // event ID
-        Ledger::events[i].getSummary() << // event summary
-        std::format(" It happened in the year {}", Ledger::events[i].getEventYear()) << // event year
-        ".\n";
+        std::cout 
+            << Ledger::events[i].getEventID() << ": " // ID
+            << Ledger::events[i].getSummary() // summary
+            << std::string(" It happened on the date ")
+            << Ledger::events[i].getEventDateObj().getDateNumeric() // event date
+            << "\n"; 
     }
-    std::cout << "Final year: " << (*calendarPtr).getCurrentYear() << "\n\n";
+    std::cout << "Final year: " << (*calendarPtr).getYear() << "\n\n";
 }

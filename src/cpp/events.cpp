@@ -8,16 +8,15 @@
 #include "../hpp/ledger.hpp"
 #include "../hpp/events.hpp"
 
-// change in future to use a date representation instead of just a year
 // event constructor
-Event::Event(int year, int numericID, std::string summary) {
-    this->year = year;
+Event::Event(Date eventDate, int numericID, std::string summary) {
+    this->eventDateObj = eventDate;
     this->numericID = numericID;
     this->summary = summary;
 };
 
-int Event::getEventYear() {
-    return this->year;
+Date Event::getEventDateObj() {
+    return this->eventDateObj;
 }
 
 int Event::getEventID() {
@@ -46,13 +45,13 @@ void War::startWar(int startYear) {
 }
 
 // function to end a war after it's been defined
-void War::endWar(int endYear, std::vector<Region*>* winners, std::vector<Region*>* losers) {
+void War::endWar(Date endDate, std::vector<Region*>* winners, std::vector<Region*>* losers) {
     // add a guard in case the war hasn't started yet
     this->ongoing = false;
-    this->endYear = endYear;
+    this->endDate = endDate;
     this->winners = winners;
     this->losers = losers;
-    this->setSummary(std::format("This war began in {} and ended in {}.", this->getEventYear(), endYear));
+    this->setSummary(std::format("This war began in {} and ended in {}.", this->getEventDateObj().getYear(), endDate.getYear()));
 }
 
 // function to print out the details of any given war
@@ -65,6 +64,6 @@ void War::printWar() {
     for (int i = 0; i < allies.size(); i++) {
         std::cout << i+1 << ": " << (*axis[i]).getRegionName() << "\n";
     }
-    std::cout << "Start year: " << this->getEventYear() << "\n";
-    std::cout << "End year: " << endYear << "\n";
+    std::cout << "Start year: " << this->getEventDateObj().getYear() << "\n";
+    std::cout << "End year: " << endDate.getYear() << "\n";
 }

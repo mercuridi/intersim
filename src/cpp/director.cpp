@@ -6,10 +6,10 @@
 #include "../hpp/ledger.hpp"
 #include "../hpp/events.hpp"
 #include "../hpp/director.hpp"
-#include "../hpp/calendar.hpp"
+#include "../hpp/date.hpp"
 
 // director constructor
-Director::Director(Calendar *calendarPtr, Ledger *ledgerPtr, std::vector<Region> *regionsPtr) {
+Director::Director(Date *calendarPtr, Ledger *ledgerPtr, std::vector<Region> *regionsPtr) {
     this->calendarPtr   = calendarPtr;
     this->ledgerPtr     = ledgerPtr;
     this->regionsPtr    = regionsPtr;
@@ -20,7 +20,7 @@ Director::Director(Calendar *calendarPtr, Ledger *ledgerPtr, std::vector<Region>
 void Director::calculateHistory(int stopYear, int maxEvents) {
 
     // while we haven't hit the max year or max war events
-    while (((*calendarPtr).getCurrentYear() < stopYear) and 
+    while (((*calendarPtr).getYear() < stopYear) and 
             ((*ledgerPtr).getEventsRecorded() < maxEvents)) {
         
         // on each iteration, increment the year
@@ -36,8 +36,8 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
             // grab the 2 manually initialised regions and start a war between them
             std::vector<Region*> allies = {&(*regionsPtr)[0]};
             std::vector<Region*> axis = {&(*regionsPtr)[1]};
-            War thisWar(allies, axis, (*calendarPtr).getCurrentYear(), (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
-            thisWar.startWar((*calendarPtr).getCurrentYear());
+            War thisWar(allies, axis, (*calendarPtr).getYear(), (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
+            thisWar.startWar((*calendarPtr).getYear());
             (*ledgerPtr).recordEvent(thisWar);
         }
     }

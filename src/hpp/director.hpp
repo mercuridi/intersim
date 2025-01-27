@@ -3,16 +3,16 @@
 #define DIRECTOR_HPP_
 
 // header imports
-#include "../hpp/calendar.hpp"
+#include "../hpp/date.hpp"
 #include "../hpp/events.hpp"
 #include "../hpp/ledger.hpp"
 
 class Director {
     public:
-        Director(Calendar *calRef, Ledger *ledRef, std::vector<Region> *regionsRef);
+        Director(Date *calRef, Ledger *ledRef, std::vector<Region> *regionsRef);
         void calculateHistory(int stopYear, int maxEvents);
     private:
-        Calendar *calendarPtr;
+        Date *calendarPtr;
         Ledger *ledgerPtr;
         std::vector<Region> *regionsPtr;
 

@@ -46,6 +46,7 @@ void Ledger::printLedger() {
             << std::string(" It happened on the date ")
             << Ledger::events[i].getEventDateObj().getDateNumeric() // event date
             << "\n"; 
+        std::cout << Ledger::events[i].getEventDateObj().getDateWritten() << "\n\n";
     }
     std::cout << "Final year: " << (*calendarPtr).getYear() << "\n\n";
 }

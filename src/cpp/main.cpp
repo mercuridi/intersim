@@ -20,15 +20,19 @@ int main() {
     Date calendar(0, 0, 0);
     std::cout << "Calendar initialised\n";
 
-    // basic functionality check for:
-    // 1. initialising the ledger (used by director)
-    // 2. recording an event to the ledger
-    std::cout << "Basic functionality check...\n";
+    // Initialise event ledger (used by director)
     Ledger ledger(&calendar);
-    Event dummyEvent;
-    ledger.recordEvent(dummyEvent);
-    ledger.printLedger();
-    std::cout << "Dummy event recorded and printed\n";
+    std::cout << "Ledger initialised\n";
+
+    // manual event recordings for whatever reason
+    // currently used for testing the written day finder (date.cpp)
+    ledger.recordEvent(Event(Date(1, 1, 1), ledger.getNextID()));
+    ledger.recordEvent(Event(Date(10, 1, 1), ledger.getNextID()));
+    ledger.recordEvent(Event(Date(1, 2, 1), ledger.getNextID()));
+    ledger.recordEvent(Event(Date(10, 2, 1), ledger.getNextID()));
+    ledger.recordEvent(Event(Date(1, 4, 1), ledger.getNextID()));
+    
+    std::cout << "Dummy event recorded\n";
 
     // initialise some regions manually (used by director)
     Region testReg1("Test Region 1", -10);
@@ -42,7 +46,7 @@ int main() {
 
     // call primary loop
     std::cout << "Calculating history...\n";
-    director.calculateHistory(100, 5);
+    director.calculateHistory(1, 20);
 
     // request ledger print to terminal
     std::cout << "Requesting ledger print...\n";

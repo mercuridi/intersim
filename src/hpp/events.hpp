@@ -9,17 +9,18 @@
 #include <limits.h>
 
 // header imports
+#include "date.hpp"
 #include "regions.hpp"
 
 class Event {
     public: 
-        Event(int year = INT_MAX, int numericID = INT_MAX, std::string summary = "This event has no provided summary.");
-        int getEventYear();
+        Event(Date eventDate = Date(), int numericID = INT_MAX, std::string summary = "This event has no provided summary.");
+        Date getEventDateObj();
         int getEventID();
         std::string getSummary();
     private:
         // change in future to use a date representation instead of a year
-        int year;
+        Date eventDateObj;
         int numericID;
         std::string summary;
     protected:
@@ -30,13 +31,13 @@ class War: public Event {
     public:
         War(std::vector<Region*> allies, std::vector<Region*> axis, int year, int numericID, std::string summary); // inherits from event in .cpp
         void startWar(int startYear);
-        void endWar(int endYear, std::vector<Region*>* winners, std::vector<Region*>* losers);
+        void endWar(Date endDate, std::vector<Region*>* winners, std::vector<Region*>* losers);
         void printWar();
     private:
         std::vector<Region*> allies;
         std::vector<Region*> axis;
         // start year inherited from base class
-        int endYear;
+        Date endDate;
         bool ongoing;
         std::vector<Region*>* winners;
         std::vector<Region*>* losers;

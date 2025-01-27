@@ -11,17 +11,19 @@
 
 class Ledger {
     public:
+        std::vector<Event> events;
+        Ledger(Calendar *calendarPtr);
+        void recordEvent(Event event);
+        int getNextID();
+        int getEventsRecorded();
+        void printLedger();
+    private:
         // variables
         int eventsRecorded;
         int idCount;
         Calendar *calendarPtr;
 
         // functions
-        std::vector<Event> events;
-        Ledger(Calendar *calendarPtr);
-        void recordEvent(Event event);
-        int getNextID();
-        void printLedger();
 };
 
 // end guard

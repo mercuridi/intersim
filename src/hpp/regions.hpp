@@ -7,11 +7,13 @@
 
 class Region {
     public:
+        Region(std::string name="No Name Provided", int attitude=0);
+        std::string getRegionName();
+    private:
         std::string name;
         // for now, attitude as a singular representation
         // in future, improve logic to handle full attitude matrices
         int attitude;
-        Region(std::string name="No Name Provided", int attitude=0);
 };
 
 // guard

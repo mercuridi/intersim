@@ -23,22 +23,28 @@ void Ledger::recordEvent(Event event) {
     eventsRecorded++;
 };
 
+int Ledger::getEventsRecorded() {
+    return this->eventsRecorded;
+}
+
+// function to get a new unique ID for a generated token
 int Ledger::getNextID() {
     idCount++;
     return idCount;
 }
 
-// this function prints the ledger
+// this function prints the entire ledger
 void Ledger::printLedger() {
     // printing long ledgers will probably crash
     // this function may change to only print a selection of events?
+    std::cout << "\nFull ledger print requested...\n";
     for (int i = 0; i < events.size(); i++) {
-        // long print statement:
+        // the following lines are a single long print statement:
         std::cout <<
-        Ledger::events[i].numericID << ": " << // event ID
-        Ledger::events[i].summary << // event summary
-        std::format(" It happened in the year {}", Ledger::events[i].year) << // event year
+        Ledger::events[i].getEventID() << ": " << // event ID
+        Ledger::events[i].getSummary() << // event summary
+        std::format(" It happened in the year {}", Ledger::events[i].getEventYear()) << // event year
         ".\n";
     }
-    std::cout << "Final year: " << (*calendarPtr).currentYear << "\n";
+    std::cout << "Final year: " << (*calendarPtr).getCurrentYear() << "\n\n";
 }

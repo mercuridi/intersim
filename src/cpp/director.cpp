@@ -20,8 +20,8 @@ Director::Director(Calendar *calendarPtr, Ledger *ledgerPtr, std::vector<Region>
 void Director::calculateHistory(int stopYear, int maxEvents) {
 
     // while we haven't hit the max year or max war events
-    while (((*calendarPtr).currentYear < stopYear) and 
-            ((*ledgerPtr).eventsRecorded < maxEvents)) {
+    while (((*calendarPtr).getCurrentYear() < stopYear) and 
+            ((*ledgerPtr).getEventsRecorded() < maxEvents)) {
         
         // on each iteration, increment the year
         (*calendarPtr).incrementYear();
@@ -36,8 +36,8 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
             // grab the 2 manually initialised regions and start a war between them
             std::vector<Region*> allies = {&(*regionsPtr)[0]};
             std::vector<Region*> axis = {&(*regionsPtr)[1]};
-            War thisWar(allies, axis, (*calendarPtr).currentYear, (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
-            thisWar.startWar((*calendarPtr).currentYear);
+            War thisWar(allies, axis, (*calendarPtr).getCurrentYear(), (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
+            thisWar.startWar((*calendarPtr).getCurrentYear());
             (*ledgerPtr).recordEvent(thisWar);
         }
     }

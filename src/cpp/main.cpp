@@ -14,7 +14,7 @@
 int main() {
     // initialise program
     std::cout << "Program initialised\n";
-    std::cout << "C++ version " << __cplusplus << "\n";
+    std::cout << "C++ version " << __cplusplus << "\n\n";
 
     // initialise calendar (used by ledger and director)
     Calendar calendar(0);
@@ -23,6 +23,8 @@ int main() {
     // basic functionality check for:
     // 1. initialising the ledger (used by director)
     // 2. recording an event to the ledger
+
+    std::cout << "Basic functionality check...\n";
     Ledger ledger(&calendar);
     Event dummyEvent;
     ledger.recordEvent(dummyEvent);
@@ -42,8 +44,10 @@ int main() {
     // call primary loop
     std::cout << "Calculating history...\n";
     director.calculateHistory(100, 5);
-    std::cout << "Main executed\n";
 
+    std::cout << "Requesting ledger print...\n";
     ledger.printLedger();
+
+    std::cout << "Main executed, returning 0.\n";
     return 0;
 };

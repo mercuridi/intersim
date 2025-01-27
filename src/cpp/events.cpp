@@ -16,6 +16,22 @@ Event::Event(int year, int numericID, std::string summary) {
     this->summary = summary;
 };
 
+int Event::getEventYear() {
+    return this->year;
+}
+
+int Event::getEventID() {
+    return this->numericID;
+}
+
+std::string Event::getSummary() {
+    return this->summary;
+}
+
+void Event::setSummary(std::string newSummary) {
+    this->summary = newSummary;
+}
+
 // war subclass constructor
 War::War(std::vector<Region*> allies, std::vector<Region*> axis, int year, int numericID, std::string summary) : Event(year, numericID, summary) {
     this->allies = allies;
@@ -36,19 +52,19 @@ void War::endWar(int endYear, std::vector<Region*>* winners, std::vector<Region*
     this->endYear = endYear;
     this->winners = winners;
     this->losers = losers;
-    this->summary = std::format("This war began in {} and ended in {}.", year, endYear);
+    this->setSummary(std::format("This war began in {} and ended in {}.", this->getEventYear(), endYear));
 }
 
 // function to print out the details of any given war
 void War::printWar() {
     std::cout << "Allies: ";
     for (int i = 0; i < allies.size(); i++) {
-        std::cout << i+1 << ": " << (*allies[i]).name << "\n";
+        std::cout << i+1 << ": " << (*allies[i]).getRegionName() << "\n";
     }
     std::cout << "Axis: ";
     for (int i = 0; i < allies.size(); i++) {
-        std::cout << i+1 << ": " << (*axis[i]).name << "\n";
+        std::cout << i+1 << ": " << (*axis[i]).getRegionName() << "\n";
     }
-    std::cout << "Start year: " << year << "\n";
+    std::cout << "Start year: " << this->getEventYear() << "\n";
     std::cout << "End year: " << endYear << "\n";
 }

@@ -10,6 +10,10 @@ Calendar::Calendar(int startYear) {
     currentYear = startYear;
 };
 
+int Calendar::getCurrentYear() {
+    return this->currentYear;
+}
+
 // function to print the current date
 void Calendar::printCurrentDate() {
     std::cout << currentYear << "\n";

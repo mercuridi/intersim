@@ -11,3 +11,7 @@ Region::Region(std::string name, int attitude) {
     this->name = name;
     this->attitude = attitude;
 }
+
+std::string Region::getRegionName() {
+    return this->name;
+}

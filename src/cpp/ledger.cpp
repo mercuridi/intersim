@@ -18,11 +18,11 @@ Ledger::Ledger(Date *calendarPtr) {
 // function to record an event (works for event subclasses)
 void Ledger::recordEvent(Event event) {
     Ledger::events.push_back(event);
-
     // increment the number of events recorded
     eventsRecorded++;
 };
 
+// returns the number of events recorded in total
 int Ledger::getEventsRecorded() {
     return this->eventsRecorded;
 }

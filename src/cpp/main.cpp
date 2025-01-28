@@ -52,11 +52,13 @@ int main() {
 
     // call primary loop
     std::cout << "Calculating history...\n";
-    director.calculateHistory(1000, 100);
+    int maxYear = 1000;
+    int maxEvents = 200;
+    director.calculateHistory(maxYear, maxEvents);
 
     // request ledger print to terminal
     std::cout << "Requesting ledger print...\n";
-    ledger.printLedger();
+    ledger.printLedger(maxYear);
 
     // finish program, shutdown gracefully
     std::cout << "Main executed, returning 0.\n";

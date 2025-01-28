@@ -1,6 +1,7 @@
 // library imports
 #include <vector>
 #include <format>
+#include <iomanip>
 
 // header imports
 #include "../hpp/date.hpp"
@@ -33,20 +34,33 @@ int Ledger::getNextID() {
     return idCount;
 }
 
+int countDigits(int n) {
+    // https://www.geeksforgeeks.org/program-count-digits-integer-3-different-methods/
+    if (n == 0) // Base case
+        return 1;
+    int count = 0;
+    while (n != 0) { // Iterate till n has digits remaining
+        n = n / 10; // Remove rightmost digit
+        ++count; // Increment digit count by 1
+    }
+    return count;
+}
+
 // this function prints the entire ledger
-void Ledger::printLedger() {
+void Ledger::printLedger(int maxYear) {
     // printing long ledgers will probably crash
     // this function may change to only print a selection of events?
     std::cout << "\nFull ledger print requested...\n";
     for (int i = 0; i < events.size(); i++) {
-        // the following lines are a single long print statement:
+        std::cout << std::setw(countDigits(maxYear+2)) << Ledger::events[i].getEventID() << ": "; // no line break
+        // above line prints a left-padded event ID
+        // below lines print the rest of the event information
         std::cout 
-            << Ledger::events[i].getEventID() << ": " // ID
             << Ledger::events[i].getSummary() // summary
             << std::string(" It happened on the date ")
-            << Ledger::events[i].getEventDateObj().getDateNumeric() // event date
+            << Ledger::events[i].getEventDateObj().getDateWritten() // written event date
+            << " (" << Ledger::events[i].getEventDateObj().getDateNumeric() << ") " // numeric event date in brackets
             << "\n"; 
-        std::cout << Ledger::events[i].getEventDateObj().getDateWritten() << "\n\n";
     }
     std::cout << "Final year: " << (*calendarPtr).getYear() << "\n\n";
 }

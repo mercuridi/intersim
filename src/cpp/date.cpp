@@ -38,7 +38,7 @@ Date::Date(int day, int month, int year) {
     this->dayNames[3] = std::string("Ambardum");
     this->dayNames[4] = std::string("Iptum");
     this->dayNames[5] = std::string("Kannakanum");
-    this->dayNames[6] = std::string("Tuntijium");
+    this->dayNames[6] = std::string("Tuntijum");
 };
 
 int Date::getYear() {
@@ -58,7 +58,7 @@ int Date::getDayOfWeek() {
     // but only when custom calendars by config are added
     // good luck to whoever takes on the challenge of determining
     // which day of the week it is in fantasy calendars
-    // this logic i think actually works except for missing leap year logic
+    // this logic i think actually works? except for missing leap year logic
     // which i really don't want to do right now
     // problem for future me; it works for the interim and 
     // that's all that actually matters right now

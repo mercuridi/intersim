@@ -29,7 +29,7 @@ class Event {
 
 class War: public Event {
     public:
-        War(std::vector<Region*> allies, std::vector<Region*> axis, int year, int numericID, std::string summary); // inherits from event in .cpp
+        War(std::vector<Region*> allies, std::vector<Region*> axis, Date eventDate, int numericID, std::string summary); // inherits from event in .cpp
         void startWar(int startYear);
         void endWar(Date endDate, std::vector<Region*>* winners, std::vector<Region*>* losers);
         void printWar();

@@ -23,12 +23,12 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
     while (((*calendarPtr).getYear() < stopYear) and 
             ((*ledgerPtr).getEventsRecorded() < maxEvents)) {
         
-        // on each iteration, increment the year
-        (*calendarPtr).incrementYear();
+        // on each iteration, increment the day
+        (*calendarPtr).incrementDay();
 
         // roll a d100
-        int d100 = std::rand() % 100;
-        if (d100 < 95) {
+        int d10000 = std::rand() % 10000;
+        if (d10000 < 9990) {
             continue;
         }
         // on rare occasions, begin a war
@@ -36,7 +36,7 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
             // grab the 2 manually initialised regions and start a war between them
             std::vector<Region*> allies = {&(*regionsPtr)[0]};
             std::vector<Region*> axis = {&(*regionsPtr)[1]};
-            War thisWar(allies, axis, (*calendarPtr).getYear(), (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
+            War thisWar(allies, axis, Date((*calendarPtr).getDay(), (*calendarPtr).getMonth(), (*calendarPtr).getYear()), (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
             thisWar.startWar((*calendarPtr).getYear());
             (*ledgerPtr).recordEvent(thisWar);
         }

@@ -16,7 +16,7 @@ class Ledger {
         void recordEvent(Event event);
         int getNextID();
         int getEventsRecorded();
-        void printLedger();
+        void printLedger(int maxYear);
     private:
         // variables
         int eventsRecorded;

@@ -26,19 +26,19 @@ Date::Date(int day, int month, int year) {
     this->daysInMonth[4] = 31;
     this->daysInMonth[5] = 28;
     this->daysInMonth[6] = 23;
-    this->monthNames[1] = std::string("Akrival");
-    this->monthNames[2] = std::string("Vetral");
-    this->monthNames[3] = std::string("Kiivaskal");
-    this->monthNames[4] = std::string("Trakettal");
-    this->monthNames[5] = std::string("Eruvettal");
-    this->monthNames[6] = std::string("Elimal");
+    this->monthNames[0] = std::string("Akrival");
+    this->monthNames[1] = std::string("Vetral");
+    this->monthNames[2] = std::string("Kiivaskal");
+    this->monthNames[3] = std::string("Trakettal");
+    this->monthNames[4] = std::string("Eruvettal");
+    this->monthNames[5] = std::string("Elimal");
+    this->dayNames[0] = std::string("Trenum");
     this->dayNames[1] = std::string("Fizum");
     this->dayNames[2] = std::string("Zyntymum");
     this->dayNames[3] = std::string("Ambardum");
     this->dayNames[4] = std::string("Iptum");
     this->dayNames[5] = std::string("Kannakanum");
     this->dayNames[6] = std::string("Tuntijium");
-    this->dayNames[7] = std::string("Trenum");
 };
 
 int Date::getYear() {
@@ -54,34 +54,25 @@ int Date::getDay() {
 }
 
 int Date::getDayOfWeek() {
-    int daysSinceFirstDay = 0;
-    int firstDay = 6;
-    int localYear = year;
-    int localMonth = month;
-    int localDay = day;
-    // figure out a more reliable way to calculate days added from leap years
-    int leapYears = localYear / 2;
-    daysSinceFirstDay = daysSinceFirstDay + (leapDays[2] * leapYears);
-    std::cout << daysSinceFirstDay << " (start)\n";
-    while (localDay != 1) {
-        daysSinceFirstDay++;
-        localDay--;
-    }
-    std::cout << daysSinceFirstDay << " (days added)\n";
-    while (localMonth != 1) {
-        daysSinceFirstDay = daysSinceFirstDay + daysInMonth[localMonth-1];
-        localMonth--;
-    }
-    std::cout << daysSinceFirstDay << " (months added)\n";
-    while (localYear != 1) {
-        daysSinceFirstDay = daysSinceFirstDay + yearLength;
-        localYear--;
-    }
-    std::cout << daysSinceFirstDay << " (years added)\n";
-    daysSinceFirstDay = daysSinceFirstDay + firstDay;
-    daysSinceFirstDay = (daysSinceFirstDay % 7) + 1;
-    std::cout << daysSinceFirstDay << " (final answer)\n";
-    return daysSinceFirstDay;
+    // this needs a full rewrite to make it a LOT more robust
+    // but only when custom calendars by config are added
+    // good luck to whoever takes on the challenge of determining
+    // which day of the week it is in fantasy calendars
+    // this logic i think actually works except for missing leap year logic
+    // which i really don't want to do right now
+    // problem for future me; it works for the interim and 
+    // that's all that actually matters right now
+    int daysSinceFirstDay = 0; // init tracker
+    daysSinceFirstDay = daysSinceFirstDay + day - 1; // add the days that have passed in the month
+    daysSinceFirstDay = daysSinceFirstDay + ((year-1)*yearLength); // add the days from previous years
+    int monthsSinceFirstDay = month; // take val to iterate on
+    while (monthsSinceFirstDay > 1) { // months have varying lengths
+        daysSinceFirstDay = daysSinceFirstDay + 
+            daysInMonth[(monthsSinceFirstDay-1)%monthsInYear];
+            // work backwards from the current month, adding all the days in complete months to the tracker
+        monthsSinceFirstDay--;
+    };
+    return daysSinceFirstDay % weekLength;
 }
 
 std::string Date::getDayOfWeekName() {
@@ -108,7 +99,7 @@ std::string Date::getDateWritten() {
     return
         getDayOfWeekName() + " the " +
         std::to_string(day) + dayQual + " of " +
-        monthNames[month] + ", " +
+        monthNames[month-1] + ", " +
         std::to_string(year);
 }
 

@@ -12,7 +12,7 @@ Date::Date(int day, int month, int year) {
     this->month = month;
     this->day = day;
 
-    // hard coded values for the Narancian calendar
+    // hard coded values for the Narancian/Interim calendar
     // ideally, move these so they're somehow accessible without
     // being written to every single date object known to man
     // is it possible to make these const in header?
@@ -62,6 +62,7 @@ int Date::getDayOfWeek() {
     // which i really don't want to do right now
     // problem for future me; it works for the interim and 
     // that's all that actually matters right now
+    // DO NOT FORGET TO REWRITE void Date::incrementDay() for leap years
     int daysSinceFirstDay = 0; // init tracker
     daysSinceFirstDay = daysSinceFirstDay + day - 1; // add the days that have passed in the month
     daysSinceFirstDay = daysSinceFirstDay + ((year-1)*yearLength); // add the days from previous years
@@ -80,25 +81,26 @@ std::string Date::getDayOfWeekName() {
 }
 
 std::string Date::getDateWritten() {
-    std::string dayQual;
+    std::string dayOrdinal;
+    // is there a better way to do this?
     if (((day == 11) or (day == 12)) or (day == 13)) {
-        dayQual = "th";
+        dayOrdinal = "th";
     }
     else if (day % 10 == 1) {
-        dayQual = "st";
+        dayOrdinal = "st";
     }
     else if (day % 10 == 2) {
-        dayQual = "nd";
+        dayOrdinal = "nd";
     }
     else if (day % 10 == 3) {
-        dayQual = "rd";
+        dayOrdinal = "rd";
     }
     else {
-        dayQual = "th";
+        dayOrdinal = "th";
     }
     return
         getDayOfWeekName() + " the " +
-        std::to_string(day) + dayQual + " of " +
+        std::to_string(day) + dayOrdinal + " of " +
         monthNames[month-1] + ", " +
         std::to_string(year);
 }
@@ -127,6 +129,11 @@ void Date::incrementMonth() {
 
 // function to increment the day
 void Date::incrementDay() {
+    // TODO: incorporate actual leap year logic to this function
+    // lack of leap years isn't actually too important to
+    // functionality of the program relative to how fucking annoying
+    // it is to implement, so i'll be leaving this for another day a
+    // long long time from now (27/01/25)
     day++;
     if (day > daysInMonth[month]) {
         day = 1;

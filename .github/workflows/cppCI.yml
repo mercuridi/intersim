@@ -13,9 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: install valgrind
+    - name: sudo apt-get install valgrind
       run: sudo apt-get install valgrind
-    - name: dirs
+    - name: mkdir src/obj
       run: mkdir src/obj
     - name: make
       run: make

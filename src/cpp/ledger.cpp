@@ -9,11 +9,11 @@
 #include "../hpp/ledger.hpp"
 
 // ledger constructor
-Ledger::Ledger(Date *calendarPtr) {
+Ledger::Ledger(Date *todayDatePtr) {
     events;
     eventsRecorded = 0;
     idCount = 0;
-    this->calendarPtr = calendarPtr;
+    this->todayDatePtr = todayDatePtr;
 };
 
 // function to record an event (works for event subclasses)
@@ -62,5 +62,5 @@ void Ledger::printLedger(int maxYear) {
             << " (" << Ledger::events[i].getEventDateObj().getDateNumeric() << ") " // numeric event date in brackets
             << "\n"; 
     }
-    std::cout << "Final year: " << (*calendarPtr).getYear() << "\n\n";
+    std::cout << "Final year: " << (*todayDatePtr).getYear() << "\n\n";
 }

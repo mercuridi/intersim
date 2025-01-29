@@ -4,6 +4,7 @@
 #include <format>
 
 // header imports
+#include "../hpp/calendar.hpp"
 #include "../hpp/date.hpp"
 #include "../hpp/director.hpp"
 #include "../hpp/events.hpp"
@@ -16,12 +17,16 @@ int main() {
     std::cout << "\nProgram initialised\n";
     std::cout << "C++ version " << __cplusplus << "\n\n";
 
-    // initialise calendar (used by ledger and director)
-    Date calendar(0, 0, 0);
+    // initialise calendar (used by all date objects)
+    Calendar calendar;
     std::cout << "Calendar initialised\n";
 
+    // initialise todayDate (used by ledger and director)
+    Date todayDate(&calendar, 0, 0, 0);
+    std::cout << "todayDate initialised\n";
+
     // Initialise event ledger (used by director)
-    Ledger ledger(&calendar);
+    Ledger ledger(&todayDate);
     std::cout << "Ledger initialised\n";
 
     // manual event recordings for whatever reason
@@ -44,10 +49,10 @@ int main() {
     Region testReg1("Test Region 1", -10);
     Region testReg2("Test Region 2", 10);
     std::vector<Region> regions = {testReg1, testReg2};
-    std::cout << "Regions initialised\n";
+    std::cout << "Test regions initialised\n";
 
     // initialise director
-    Director director(&calendar, &ledger, &regions);
+    Director director(&calendar, &todayDate, &ledger, &regions);
     std::cout << "Director initialised\n";
 
     // call primary loop

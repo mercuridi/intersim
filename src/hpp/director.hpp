@@ -9,14 +9,13 @@
 
 class Director {
     public:
-        Director(Date *calRef, Ledger *ledRef, std::vector<Region> *regionsRef);
+        Director(Calendar *calendarPtr, Date *todayPtr, Ledger *ledPtr, std::vector<Region> *regionsPtr);
         void calculateHistory(int stopYear, int maxEvents);
     private:
-        Date *calendarPtr;
+        Calendar *calendarPtr;
+        Date *todayDatePtr;
         Ledger *ledgerPtr;
         std::vector<Region> *regionsPtr;
-
-
 };
 
 // end guard

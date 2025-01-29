@@ -1,0 +1,25 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: sudo apt-get install valgrind
+      run: sudo apt-get install valgrind
+    - name: mkdir src/obj
+      run: mkdir src/obj
+    - name: make
+      run: make
+    - name: make run
+      run: make run
+    - name: make val
+      run: make val

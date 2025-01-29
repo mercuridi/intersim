@@ -14,7 +14,7 @@
 
 class Event {
     public: 
-        Event(Date eventDate = Date(), int numericID = INT_MAX, std::string summary = "This event has no provided summary.");
+        Event(Date eventDate, int numericID, std::string summary);
         Date getEventDateObj();
         int getEventID();
         std::string getSummary();

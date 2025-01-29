@@ -32,9 +32,10 @@ void Event::setSummary(std::string newSummary) {
 }
 
 // war subclass constructor
-War::War(std::vector<Region*> allies, std::vector<Region*> axis, Date eventDate, int numericID, std::string summary) : Event(eventDate, numericID, summary) {
-    this->allies = allies;
-    this->axis = axis;
+War::War(
+    std::vector<Region*> allies, std::vector<Region*> axis, Date eventDate, int numericID, std::string summary) : Event(eventDate, numericID, summary) {
+        this->allies = allies;
+        this->axis = axis;
 };
 
 // function to start a war after it's been defined

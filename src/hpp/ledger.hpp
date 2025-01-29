@@ -12,7 +12,7 @@
 class Ledger {
     public:
         std::vector<Event> events;
-        Ledger(Date *calendarPtr);
+        Ledger(Date *todayDatePtr);
         void recordEvent(Event event);
         int getNextID();
         int getEventsRecorded();
@@ -21,7 +21,7 @@ class Ledger {
         // variables
         int eventsRecorded;
         int idCount;
-        Date *calendarPtr;
+        Date *todayDatePtr;
 
         // functions
 };

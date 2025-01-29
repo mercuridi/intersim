@@ -1,7 +1,7 @@
 CC := "g++"
 version := "-std=c++23"
 invoke := $(CC) $(version)
-allobj := src/obj/date.o src/obj/director.o src/obj/events.o src/obj/ledger.o src/obj/regions.o
+allobj := src/obj/calendar.o src/obj/date.o src/obj/director.o src/obj/events.o src/obj/ledger.o src/obj/regions.o
 
 all: main
 	@echo "make: command make val to execute with valgrind"
@@ -15,6 +15,11 @@ run: main
 	@echo "make: Executing main (standard mode)\n"
 	./main
 	@echo "\nmake: Main executed"
+
+src/obj/calendar.o: src/cpp/calendar.cpp
+	@echo "make: compiling calendar.o..."
+	$(invoke) -c src/cpp/calendar.cpp -o src/obj/calendar.o
+	@echo "make: compiled calendar.cpp to calendar.o"
 
 src/obj/date.o: src/cpp/date.cpp
 	@echo "make: compiling date.o..."

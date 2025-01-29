@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Ximaz Valgrind
     - uses: Ximaz/valgrind-action@v1.2.0
       with:
           # Either absolute or reative path to the binary you want to check the

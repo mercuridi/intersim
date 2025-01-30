@@ -46,8 +46,8 @@ int main() {
     //ledger.recordEvent(Event(Date(1, 1, 1), ledger.getNextID()));
 
     // initialise some regions manually (used by director)
-    Region testReg1("Test Region 1", -10);
-    Region testReg2("Test Region 2", 10);
+    Region testReg1("Test Region 1", 0);
+    Region testReg2("Test Region 2", 0);
     std::vector<Region> regions = {testReg1, testReg2};
     std::cout << "Test regions initialised\n";
 

@@ -10,6 +10,9 @@ class Region {
     public:
         Region(std::string name="No Name Provided", int attitude=INT_MAX);
         std::string getRegionName();
+        int getAttitude();
+        void setAttitude(int attitude);
+        void nudgeAttitudeRandom(int warThres);
     private:
         std::string name;
         // for now, attitude as a singular representation

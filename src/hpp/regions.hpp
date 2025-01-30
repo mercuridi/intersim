@@ -4,7 +4,7 @@
 
 // library imports
 #include <iostream>
-#include <limits.h>
+#include <climits>
 
 class Region {
     public:

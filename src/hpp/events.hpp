@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <limits.h>
+#include <climits>
 
 // header imports
 #include "date.hpp"

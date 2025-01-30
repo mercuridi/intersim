@@ -45,14 +45,23 @@ int Date::getDayOfWeek() {
     // problem for future me; it works for the interim and 
     // that's all that actually matters right now
     // DO NOT FORGET TO REWRITE void Date::incrementDay() for leap years
+
     int daysSinceFirstDay = 0; // init tracker
-    daysSinceFirstDay = daysSinceFirstDay + day - 1; // add the days that have passed in the month
-    daysSinceFirstDay = daysSinceFirstDay + ((year-1)*(*calendarPtr).getYearLength()); // add the days from previous years
+
+    // add the days that have passed in the month
+    daysSinceFirstDay = daysSinceFirstDay + day - 1;
+
+    // add the days from previous years
+    daysSinceFirstDay = daysSinceFirstDay + 
+        ((year-1)*(*calendarPtr).getYearLength()); 
     int monthsSinceFirstDay = month; // take val to iterate on
     while (monthsSinceFirstDay > 1) { // months have varying lengths
+        // work backwards from the current month, adding all the days
+        // in complete months to the tracker
         daysSinceFirstDay = daysSinceFirstDay + 
-            (*calendarPtr).getDaysInMonth((monthsSinceFirstDay-1)%(*calendarPtr).getMonthsInYear());
-            // work backwards from the current month, adding all the days in complete months to the tracker
+            (*calendarPtr).getDaysInMonth((monthsSinceFirstDay-1) % 
+            (*calendarPtr).getMonthsInYear());
+        // decrement months remaining
         monthsSinceFirstDay--;
     };
     return daysSinceFirstDay % (*calendarPtr).getWeekLength();

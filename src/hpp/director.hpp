@@ -9,7 +9,11 @@
 
 class Director {
     public:
-        Director(Calendar *calendarPtr, Date *todayPtr, Ledger *ledPtr, std::vector<Region> *regionsPtr);
+        Director(
+            Calendar *calendarPtr, 
+            Date *todayPtr, 
+            Ledger *ledPtr, 
+            std::vector<Region> *regionsPtr);
         void calculateHistory(int stopYear, int maxEvents);
     private:
         Calendar *calendarPtr;

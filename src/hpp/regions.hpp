@@ -4,10 +4,11 @@
 
 // library imports
 #include <iostream>
+#include <climits>
 
 class Region {
     public:
-        Region(std::string name="No Name Provided", int attitude=0);
+        Region(std::string name="No Name Provided", int attitude=INT_MAX);
         std::string getRegionName();
     private:
         std::string name;

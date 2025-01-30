@@ -45,14 +45,23 @@ int Date::getDayOfWeek() {
     // problem for future me; it works for the interim and 
     // that's all that actually matters right now
     // DO NOT FORGET TO REWRITE void Date::incrementDay() for leap years
+
     int daysSinceFirstDay = 0; // init tracker
-    daysSinceFirstDay = daysSinceFirstDay + day - 1; // add the days that have passed in the month
-    daysSinceFirstDay = daysSinceFirstDay + ((year-1)*(*calendarPtr).getYearLength()); // add the days from previous years
+
+    // add the days that have passed in the month
+    daysSinceFirstDay = daysSinceFirstDay + day - 1;
+
+    // add the days from previous years
+    daysSinceFirstDay = daysSinceFirstDay + 
+        ((year-1)*(*calendarPtr).getYearLength()); 
     int monthsSinceFirstDay = month; // take val to iterate on
     while (monthsSinceFirstDay > 1) { // months have varying lengths
+        // work backwards from the current month, adding all the days
+        // in complete months to the tracker
         daysSinceFirstDay = daysSinceFirstDay + 
-            (*calendarPtr).getDaysInMonth((monthsSinceFirstDay-1)%(*calendarPtr).getMonthsInYear());
-            // work backwards from the current month, adding all the days in complete months to the tracker
+            (*calendarPtr).getDaysInMonth((monthsSinceFirstDay-1) % 
+            (*calendarPtr).getMonthsInYear());
+        // decrement months remaining
         monthsSinceFirstDay--;
     };
     return daysSinceFirstDay % (*calendarPtr).getWeekLength();
@@ -111,13 +120,13 @@ void Date::incrementMonth() {
 
 // function to increment the day
 void Date::incrementDay() {
-    // TODO: incorporate actual leap year logic to this function
+    // TODO: incorporate actual leap year logic to this function chain
     // lack of leap years isn't actually too important to
     // functionality of the program relative to how fucking annoying
     // it is to implement, so i'll be leaving this for another day a
     // long long time from now (27/01/25)
     day++;
-    if (day > (*calendarPtr).getDaysInMonth(month)) {
+    if (day > (*calendarPtr).getDaysInMonth(month-1)) {
         day = 1;
         incrementMonth();
     }

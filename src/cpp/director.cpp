@@ -10,7 +10,11 @@
 #include "../hpp/calendar.hpp"
 
 // director constructor
-Director::Director(Calendar *calendarPtr, Date *todayDatePtr, Ledger *ledgerPtr, std::vector<Region> *regionsPtr) {
+Director::Director(
+        Calendar *calendarPtr, 
+        Date *todayDatePtr, 
+        Ledger *ledgerPtr, 
+        std::vector<Region> *regionsPtr) {
     this->calendarPtr   = calendarPtr;
     this->todayDatePtr  = todayDatePtr;
     this->ledgerPtr     = ledgerPtr;
@@ -35,10 +39,18 @@ void Director::calculateHistory(int stopYear, int maxEvents) {
         }
         // on rare occasions, begin a war
         else {
-            // grab the 2 manually initialised regions and start a war between them
+            // grab the 2 initialised regions and start a war between them
             std::vector<Region*> allies = {&(*regionsPtr)[0]};
             std::vector<Region*> axis = {&(*regionsPtr)[1]};
-            War thisWar(allies, axis, Date(calendarPtr, (*todayDatePtr).getDay(), (*todayDatePtr).getMonth(), (*todayDatePtr).getYear()), (*ledgerPtr).getNextID(), "This is a dummy war made as part of testing.");
+            War thisWar(
+                allies, axis, 
+                Date( // date object construction in constructor call
+                    calendarPtr, 
+                    (*todayDatePtr).getDay(), 
+                    (*todayDatePtr).getMonth(), 
+                    (*todayDatePtr).getYear()), 
+                (*ledgerPtr).getNextID(), 
+                "This is a dummy war made as part of testing.");
             thisWar.startWar((*todayDatePtr).getYear());
             (*ledgerPtr).recordEvent(thisWar);
         }

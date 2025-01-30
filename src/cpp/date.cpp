@@ -111,13 +111,13 @@ void Date::incrementMonth() {
 
 // function to increment the day
 void Date::incrementDay() {
-    // TODO: incorporate actual leap year logic to this function
+    // TODO: incorporate actual leap year logic to this function chain
     // lack of leap years isn't actually too important to
     // functionality of the program relative to how fucking annoying
     // it is to implement, so i'll be leaving this for another day a
     // long long time from now (27/01/25)
     day++;
-    if (day > (*calendarPtr).getDaysInMonth(month)) {
+    if (day > (*calendarPtr).getDaysInMonth(month-1)) {
         day = 1;
         incrementMonth();
     }
